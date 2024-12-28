@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom Finder</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    h1
+    {
+        text-align: center;
+        border:solid;
+    }
+    
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 300px;
+        margin: 0 auto;
+    }
+    label, select {
+        display: block;
+        margin-bottom: 10px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1 >SY AIDS TIMETABLE</h1>
+        <h2>Classroom and Subject Finder</h2>
+        
+        <form id="classroomfind">
+            <label for="division">Select a Division :</label>
+            <select id="division" name="div">
+                <option value="">DIVISION</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+            </select>
+            <label for="day">Select a Day :</label>
+            <select id="day" name="day">
+                <option value="">DAY</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+            </select>
+            <label for="time">Select a Time :</label>
+            <select id="time" name="time">
+                <option value="">TIME</option>
+                <option value="09:15 AM">09:15 AM</option>
+                <option value="11:30 AM">11:30 AM</option>
+                <option value="12:30 PM">12:30 PM</option>
+                <option value="02:45 PM">02:45 PM</option>
+                <option value="03:45 PM">03:45 PM</option>
+            </select>
+            <button type="button" onclick="findClassroom()">Find Classroom</button>
+        </form>
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        function findClassroom() {
+            var day = document.getElementById('day').value;
+            var division = document.getElementById('division').value;
+            var time = document.getElementById('time').value;
+            var resultDiv = document.getElementById('result');
+
+            var classroom, subject;
+
+            if (day === 'monday') {
+                if (time === '09:15 AM' && division === 'A') {
+                    classroom = '212, 212, 213, 213';
+                    subject = 'BATCH-A :- DSL Practical, BATCH-B :- NOT Practical, BATCH-C :- DTL Practical, BATCH-D :- VSEC Practical';
+                } else if (time === '09:15 AM' && division === 'B') {
+                    classroom = '214, BFL, 108-IT LAB, 109-SDL LAB';
+                    subject = 'BATCH-A :- DSL Practical, BATCH-B :- NOT Practical, BATCH-C :- DTL Practical, BATCH-D :- VSEC Practical';
+                } else if (time === '11:30 AM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DM';
+                } else if (time === '11:30 AM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DS';
+                } else if (time === '12:30 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DT';
+                } else if (time === '12:30 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DT';
+                } else if (time === '02:45 PM' && division === 'B') {
+                    classroom = '210';
+                    subject = 'NOT';
+                } else if (time === '03:45 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DS';
+                } else if (time === '03:45 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DM';
+                } else {
+                    classroom = 'N/A';
+                    subject = 'N/A';
+                }
+            } else if (day === 'tuesday') {
+                if (time === '09:15 AM' && division === 'A') {
+                    classroom = '212, 212, 213, 213';
+                    subject = 'BATCH-A :- NOT Practical, BATCH-B :- DSL Practical, BATCH-C :- VSEC Practical, BATCH-D :- DTL Practical';
+                } else if (time === '09:15 AM' && division === 'B') {
+                    classroom = 'BFL, 214, 109-SDL LAB, 108-IT LAB';
+                    subject = 'BATCH-A :- NOT Practical, BATCH-B :- DSL Practical, BATCH-C :- VSEC Practical, BATCH-D :- DTL Practical';
+                } else if (time === '11:30 AM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DS';
+                } else if (time === '11:30 AM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'NOT';
+                } else if (time === '12:30 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DT';
+                } else if (time === '12:30 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DT';
+                } else if (time === '02:45 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DM';
+                } else if (time === '02:45 PM' && division === 'B') {
+                    classroom = 'Room 214, 108, 109';
+                    subject = 'VSEC (A,B,C,D)';
+                } else if (time === '03:45 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'NOT';
+                } else if (time === '03:45 PM' && division === 'B') {
+                    classroom = 'Room 214, 108, 109';
+                    subject = 'VSEC (A,B,C,D)';
+                } else {
+                    classroom = 'N/A';
+                    subject = 'N/A';
+                }
+            } else if (day === 'wednesday') {
+                if (time === '09:15 AM' && division === 'A') {
+                    classroom = 'Room 212, 212, 213, 213';
+                    subject = 'BATCH-A :- DTL Practical, BATCH-B :- VSEC Practical, BATCH-C :- DSL Practical, BATCH-D :- NOT Practical';
+                } else if (time === '09:15 AM' && division === 'B') {
+                    classroom = 'Room 108-IT LAB, 109-SDL LAB, 214, BFL';
+                    subject = 'BATCH-A :- DTL Practical, BATCH-B :- VSEC Practical, BATCH-C :- DSL Practical, BATCH-D :- NOT Practical';
+                } else if (time === '11:30 AM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DS';
+                } else if (time === '11:30 AM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DM';
+                } else if (time === '12:30 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DT';
+                } else if (time === '12:30 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DM';
+                } else if (time === '02:45 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'NOT';
+                } else if (time === '02:45 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'NOT';
+                } else if (time === '03:45 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DS';
+                } else {
+                    classroom = 'N/A';
+                    subject = 'N/A';
+                }
+            } else if (day === 'thursday') {
+                if (time === '09:15 AM' && division === 'A') {
+                    classroom = 'Room 12, 212, 213, 213';
+                    subject = 'BATCH-A :- VSEC Practical, BATCH-B :- DTL Practical, BATCH-C :- NOT Practical, BATCH-D :- DSL Practical';
+                } else if (time === '09:15 AM' && division === 'B') {
+                    classroom = 'NULL';
+                    subject = 'NULL';
+                } else if (time === '11:30 AM' && division === 'A') {
+                    classroom = 'Room 214, 108, 109';
+                    subject = 'VSEC (A, B, C, D)';
+                } else if (time === '11:30 AM' && division === 'B') {
+                    classroom = 'Room 212, 212, 213, 213';
+                    subject = 'VSEC Practical, BATCH-B :- DTL Practical, BATCH-C :- NOT Practical, BATCH-D :- DSL Practical';
+                } else if (time === '12:30 PM' && division === 'A') {
+                    classroom = 'Room 212, 212, 213, 213';
+                    subject = 'VSEC Practical, BATCH-B :- DTL Practical, BATCH-C :- NOT Practical, BATCH-D :- DSL Practical';
+                } else if (time === '12:30 PM' && division === 'B') {
+                    classroom = 'Room 212, 212, 213, 213';
+                    subject = 'VSEC Practical, BATCH-B :- DTL Practical, BATCH-C :- NOT Practical, BATCH-D :- DSL Practical';
+                } else if (time === '02:45 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'DM';
+                } else if (time === '02:45 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DM';
+                } else if (time === '03:45 PM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'NOT';
+                } else if (time === '03:45 PM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'DS';
+                } else {
+                    classroom = 'N/A';
+                    subject = 'N/A';
+                }
+            } else if (day === 'friday') {
+                if (time === '09:15 AM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'HON';
+                } else if (time === '09:15 AM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'HON';
+                } else if (time === '10:15 AM' && division === 'A') {
+                    classroom = 'Room 211';
+                    subject = 'MDM';
+                } else if (time === '10:15 AM' && division === 'B') {
+                    classroom = 'Room 210';
+                    subject = 'MDM';
+                } else if (time === '11:30 AM' && division === 'A') {
+                    classroom = 'Room 212, 213 Lab';
+                    subject = 'MDM Lab';
+                } else if (time === '11:30 AM' && division === 'B') {
+                    classroom = 'Room 214, 208, 109';
+                    subject = 'MDM Lab';
+                } else if (time === '12:30 PM' && division === 'A') {
+                    classroom = 'Room 212, 213 Lab';
+                    subject = 'MDM Lab';
+                } else if (time === '12:30 PM' && division === 'B') {
+                    classroom = 'Room 214, 208, 109';
+                    subject = 'MDM Lab';
+                } else if (time === '02:45 PM' && division === 'A') {
+                    classroom = 'Room 212, 213 Lab';
+                    subject = 'HON/D MINOR';
+                } else if (time === '02:45 PM' && division === 'B') {
+                    classroom = 'Room 214, 108, 109';
+                    subject = 'HON/D MINOR';
+                } else if (time === '03:45 PM' && division === 'A') {
+                    classroom = 'Room 212, 213 Lab';
+                    subject = 'HON/D MINOR';
+                } else if (time === '03:45 PM' && division === 'B') {
+                    classroom = 'Room 214, 108, 109';
+                    subject = 'HON/D MINOR';
+                } else {
+                    classroom = 'N/A';
+                    subject = 'N/A';
+                }
+            } else {
+                classroom = 'N/A';
+                subject = 'N/A';
+            }
+
+            // Display the result
+            resultDiv.innerHTML = `<strong>Classroom:</strong> ${classroom}<br><strong>Subject:</strong> ${subject}`;
+        }
+    </script>
+</body>
+</html>
